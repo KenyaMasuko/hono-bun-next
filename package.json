@@ -1,0 +1,25 @@
+{
+  "name": "hono-next-todo",
+  "module": "index.ts",
+  "type": "module",
+  "scripts": {
+    "lint": "eslint --ext .ts .",
+    "lint:fix": "eslint --ext .ts . --fix",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "backend:dev": "cd backend && bun run dev",
+    "front:dev": "cd frontend && bun run dev"
+  },
+  "workspaces": [
+    "backend/*",
+    "frontend/*"
+  ],
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "eslint": "^8.50.0"
+  }
+}
