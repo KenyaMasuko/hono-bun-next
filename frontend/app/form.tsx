@@ -31,24 +31,30 @@ export const TodoForm: React.FC = () => {
 
   const handleSubmit = form.onSubmit(async (values) => {
     if (values.id) {
-      const res = await fetch(`http://0.0.0.0:8787/api/todos/${values.id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(values),
-      });
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/todos/${values.id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(values),
+        }
+      );
       if (!res.ok) {
         console.log(res);
       }
     } else {
-      const res = await fetch("http://0.0.0.0:8787/api/todos", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(values),
-      });
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/todos`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(values),
+        }
+      );
       if (!res.ok) {
         console.log(res);
       }

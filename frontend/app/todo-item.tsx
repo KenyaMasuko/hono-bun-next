@@ -35,7 +35,7 @@ export const TodoItem: React.FC<Props> = (props) => {
             checked={checked}
             onChange={async () => {
               const res = await fetch(
-                `http://0.0.0.0:8787/api/todos/${props.todo.id}`,
+                `${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/todos/${props.todo.id}`,
                 {
                   method: "PUT",
                   headers: {
