@@ -9,10 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "react": "latest",
-    "react-dom": "latest",
+    "@mantine/core": "^7.0.2",
+    "@mantine/form": "^7.0.2",
+    "@mantine/hooks": "^7.0.2",
     "next": "latest",
-    "backend": "workspace:backend"
+    "react": "latest",
+    "react-dom": "latest"
   },
   "devDependencies": {
     "typescript": "latest",
