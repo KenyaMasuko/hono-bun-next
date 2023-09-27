@@ -4,8 +4,9 @@
     "dev": "bun run --hot src/index.ts"
   },
   "dependencies": {
+    "@hono/zod-validator": "^0.1.9",
     "hono": "^3.7.2",
-    "frontend": "workspace:frontend"
+    "zod": "^3.22.2"
   },
   "devDependencies": {
     "bun-types": "^0.6.2"

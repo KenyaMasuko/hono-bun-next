@@ -1,4 +1,6 @@
+import { zValidator } from "@hono/zod-validator";
 import { Hono } from "hono";
+import { z } from "zod";
 
 let todoList = [
   { id: 1, title: "todo1", completed: false },
@@ -11,17 +13,31 @@ const todos = new Hono();
 
 todos.get("/", (c) => c.json(todoList));
 
-todos.post("/", async (c) => {
-  const params = await c.req.json<{ title: string }>();
-  const newTodo = {
-    id: todoList.length + 1,
-    title: params.title,
-    completed: false,
-  };
-  todoList = [...todoList, newTodo];
+todos.post(
+  "/",
+  zValidator(
+    "form",
+    z.object({
+      title: z.string({ required_error: "title is required" }),
+    }),
+    (result, c) => {
+      if (!result.success) {
+        return c.text("invalid", 400);
+      }
+    }
+  ),
+  async (c) => {
+    const { title } = c.req.valid("form");
+    const newTodo = {
+      id: todoList.length + 1,
+      title: title,
+      completed: false,
+    };
+    todoList = [...todoList, newTodo];
 
-  return c.json(newTodo, 201);
-});
+    return c.json(newTodo, 201);
+  }
+);
 
 todos.put("/:id", async (c) => {
   const id = c.req.param("id");
