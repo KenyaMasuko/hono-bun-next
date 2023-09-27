@@ -4,12 +4,14 @@ import React from "react";
 async function getTodos(): Promise<
   { id: number; title: string; completed: boolean }[]
 > {
+  console.log(process.env.API_ENDPOINT);
   const res = await fetch(`${process.env.API_ENDPOINT}/api/todos`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
     },
+    cache: "no-cache",
   });
   const todos = await res.json();
   return todos;
