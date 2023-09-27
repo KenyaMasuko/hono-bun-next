@@ -4,7 +4,7 @@ import React from "react";
 async function getTodos(): Promise<
   { id: number; title: string; completed: boolean }[]
 > {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/todos`, {
+  const res = await fetch(`${process.env.API_ENDPOINT}/api/todos`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
