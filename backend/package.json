@@ -1,12 +1,23 @@
 {
-  "scripts": {
-    "dev": "bun run --hot src/index.ts"
-  },
-  "dependencies": {
-    "hono": "^3.7.2",
-    "frontend": "workspace:*"
-  },
-  "devDependencies": {
-    "bun-types": "^0.6.2"
-  }
+	"name": "backend",
+	"version": "0.0.0",
+	"private": true,
+	"scripts": {
+		"deploy": "wrangler deploy",
+		"start": "wrangler dev",
+		"test": "jest --verbose --watch"
+	},
+	"dependencies": {
+		"hono": "^3.7.2"
+	},
+	"devDependencies": {
+		"@cloudflare/workers-types": "^4.20230419.0",
+		"@types/jest": "^29.5.5",
+		"bun-types": "^0.6.2",
+		"esbuild-jest": "^0.5.0",
+		"jest": "^29.7.0",
+		"jest-environment-miniflare": "^2.14.1",
+		"typescript": "^5.0.4",
+		"wrangler": "^3.0.0"
+	}
 }
